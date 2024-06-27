@@ -1,15 +1,12 @@
 def solution(s):
-    left_parentheses = 0
-    right_parentheses = 0
+    parentheses = []
     for i in s:
-        if i == "(":
-            left_parentheses +=1
-        elif i == ")":
-            right_parentheses +=1
-            if left_parentheses < right_parentheses:
-                return False
-            
-    if right_parentheses == left_parentheses:
+        if i =="(":
+            parentheses.append(i)
+        elif len(parentheses) > 0:
+            parentheses.pop()
+        else: return False
+    if len(parentheses) == 0:
         return True
     else:
         return False
