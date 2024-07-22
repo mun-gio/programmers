@@ -1,12 +1,10 @@
 def solution(s):
-    parentheses = []
-    for i in s:
-        if i =="(":
-            parentheses.append(i)
-        elif len(parentheses) > 0:
-            parentheses.pop()
-        else: return False
-    if len(parentheses) == 0:
-        return True
-    else:
-        return False
+    stack = []
+    for p in s:
+        if p =="(":
+            stack.append(p)
+        else:
+            if not stack:
+                return False
+            stack.pop()
+    return not stack
