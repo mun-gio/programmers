@@ -1,16 +1,20 @@
+from collections import deque
 def solution(n, computers):
     answer = 0
     visited = [False] * n
-    def dfs(cur_v):
+    queue = deque()
+    
+    def bfs(cur_v):
+        queue.append(cur_v)
         visited[cur_v] = True
-        for next_v in range(n):
-            # 연결이 안된거니까 skip
-            if computers[cur_v][next_v] == 0: continue
-            if not visited[next_v]:
-                dfs(next_v)
-                
-    for cur_v in range(n):
-        if not visited[cur_v]:
-            dfs(cur_v)
+        while queue:
+            cur_v = queue.popleft()
+            for next_v in range(n):
+                if computers[cur_v][next_v] == 1 and not visited[next_v]:
+                    queue.append(next_v)
+                    visited[next_v] = True
+    for i in range(n):
+        if not visited[i]:
             answer += 1
+            bfs(i)
     return answer
