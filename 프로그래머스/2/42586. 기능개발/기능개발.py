@@ -1,19 +1,9 @@
-import math
 def solution(progresses, speeds):
-    p = len(progresses)
-    remain = []
-    li =[]
-    j = 0
-    for i in range(p):
-        if (100 - progresses[i])/speeds[i] > (100 - progresses[i])//speeds[i]:
-            num = (100 - progresses[i])//speeds[i] + 1
+    q=[]
+    for p, s in zip(progresses, speeds):
+        if len(q)==0 or q[-1][0]<-((p-100)//s):
+            q.append([-((p-100)//s),1])
+            print(-((p-100)//s))
         else:
-            num = (100 - progresses[i])//speeds[i]
-        remain.append(num)
-    for i in range(p):
-        if i == 0 or remain[i] > remain[j]:
-            li.append(1)
-            j = i
-        elif remain[i] <= remain[j]:
-            li[-1] += 1
-    return li
+            q[-1][1]+=1
+    return [i[1] for i in q]
