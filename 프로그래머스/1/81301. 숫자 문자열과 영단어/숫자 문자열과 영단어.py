@@ -1,17 +1,6 @@
 def solution(s):
-    num_dict = {
-        'zero' : '0',
-        'one' : '1',
-        'two' : '2',
-        'three' : '3',
-        'four' : '4',
-        'five' : '5',
-        'six' : '6',
-        'seven' : '7',
-        'eight' : '8',
-        'nine' : '9'
-    }
-    for i in num_dict:
-        if i in s:
-            s = s.replace(i,num_dict[i])
+    num_list = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    for i, sn in enumerate(num_list):
+        if sn in s:
+            s = s.replace(sn, str(i))
     return int(s)
