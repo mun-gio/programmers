@@ -1,10 +1,16 @@
 def solution(s):
-    stack = []
-    for p in s:
-        if p =="(":
-            stack.append(p)
-        else:
+    stack =[]
+    for i in s:
+        if i == '(':
+            stack.append(i)
+        elif i == ')':
             if not stack:
                 return False
-            stack.pop()
-    return not stack
+            elif stack[-1] == '(':
+                stack.pop()
+        else:
+            return False
+    if not stack:
+        return True
+    else:
+        return False
