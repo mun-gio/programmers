@@ -1,5 +1,5 @@
 def solution(people, limit):
-    people.sort(reverse = True)
+    people.sort()
     answer = 0
     i = 0
     j = len(people) -1
@@ -15,6 +15,6 @@ def solution(people, limit):
             j -= 1
             answer += 1
         else:
-            i += 1
+            j -= 1
             answer += 1
         
